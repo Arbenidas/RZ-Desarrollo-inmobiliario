@@ -34,8 +34,8 @@ final List<Project> projectsData = [
       'assets/cumbres/congo.jpg',
     ],
     videoUrls: [
-      'assets/cumbres/congop.mov',
-      'assets/cumbres/video_nuevo_cumbres.mov',
+      'assets/cumbres/congop.mp4',
+      'assets/cumbres/video_nuevo_cumbres.mp4',
     ],
     features: ['Lago Artificial', 'Senderismo', 'Cabañas Airbnb', 'Seguridad 24/7'],
   ),
