@@ -25,13 +25,16 @@ class ProjectDetailPage extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
                 project.title,
-                style: AppTextStyles.h2.copyWith(
+                style: AppTextStyles.h4.copyWith( // Smaller text for key text
                   color: Colors.white,
+                  fontWeight: FontWeight.bold,
                   shadows: [
                     Shadow(color: Colors.black.withOpacity(0.8), blurRadius: 10),
                   ],
                 ),
               ),
+              centerTitle: true,
+              expandedTitleScale: 2.0, // Scale up more to reach H2 size when expanded
               background: Stack(
                 fit: StackFit.expand,
                 children: [

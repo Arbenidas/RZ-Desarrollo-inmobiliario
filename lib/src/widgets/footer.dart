@@ -49,21 +49,51 @@ class Footer extends StatelessWidget {
               const SizedBox(height: 32),
 
               // Bottom Section
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                   Text(
-                    '© 2026 RZ Desarrollos Inmobiliarios. Todos los derechos reservados.',
-                    style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[600], fontSize: 12),
-                  ),
-                  Row(
-                    children: [
-                      Text('Privacidad', style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[600], fontSize: 12)),
-                      const SizedBox(width: 24),
-                      Text('Legal', style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[600], fontSize: 12)),
-                    ],
-                  ),
-                ],
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  final isDesktop = constraints.maxWidth > 600;
+                  return isDesktop
+                      ? Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                             Text(
+                              '© 2026 RZ Desarrollos Inmobiliarios. Todos los derechos reservados.',
+                              style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[600], fontSize: 12),
+                            ),
+                            Row(
+                              children: [
+                                Text('Privacidad', style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[600], fontSize: 12)),
+                                const SizedBox(width: 24),
+                                Text('Legal', style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[600], fontSize: 12)),
+                              ],
+                            ),
+                          ],
+                        )
+                      : Column(
+                          children: [
+                            Text(
+                              '© 2026 RZ Desarrollos Inmobiliarios.',
+                              style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[600], fontSize: 12),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 8),
+                             Text(
+                              'Todos los derechos reservados.',
+                              style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[600], fontSize: 12),
+                              textAlign: TextAlign.center,
+                            ),
+                            const SizedBox(height: 16),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text('Privacidad', style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[600], fontSize: 12)),
+                                const SizedBox(width: 24),
+                                Text('Legal', style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[600], fontSize: 12)),
+                              ],
+                            ),
+                          ],
+                        );
+                },
               ),
             ],
           ),

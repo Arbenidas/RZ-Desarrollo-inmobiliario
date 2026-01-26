@@ -23,6 +23,11 @@ class AppTextStyles {
         fontWeight: FontWeight.w400,
       );
 
+   static TextStyle get h4 => serif.copyWith(
+        fontSize: 28,
+        fontWeight: FontWeight.w400,
+      );
+
   static TextStyle get bodyLarge => sans.copyWith(
         fontSize: 18,
         fontWeight: FontWeight.w300,

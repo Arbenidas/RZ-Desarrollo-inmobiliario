@@ -24,7 +24,7 @@ final List<Project> projectsData = [
   Project(
     title: 'Cumbres de Coatepeque',
     location: 'Coatepeque, Santa Ana Este',
-    description: 'Disfruta de momentos inolvidables con terrenos desde 286 v² hasta 1,200 v². Amenidades exclusivas: Cabañas para Airbnb, senderismo, área de picnic y lago artificial. A solo 15 minutos del Lago de Coatepeque.',
+    description: 'Disfruta de momentos inolvidables con terrenos desde 286 v² hasta 1,000 v². Amenidades exclusivas: Cabañas para Airbnb, senderismo, área de picnic y lago artificial. A solo 15 minutos del Lago de Coatepeque.',
     imageUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1470&q=80',
     galleryImages: [
       'assets/cumbres/img_0568.jpg',

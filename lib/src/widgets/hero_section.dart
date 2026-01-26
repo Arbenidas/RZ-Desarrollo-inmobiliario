@@ -27,8 +27,8 @@ class HeroSection extends StatelessWidget {
               fit: BoxFit.cover,
             ).animate(onPlay: (controller) => controller.repeat(reverse: true))
               .scale(
-                begin: const Offset(1.0, 1.0),
-                end: const Offset(1.05, 1.05),
+                begin: const Offset(1.05, 1.05),
+                end: const Offset(1.1, 1.1),
                 duration: 10.seconds,
               ),
           ),
@@ -48,10 +48,12 @@ class HeroSection extends StatelessWidget {
                   begin: Alignment.bottomCenter,
                   end: Alignment.topCenter,
                   colors: [
-                    Colors.black.withOpacity(0.8),
+                    AppColors.backgroundDark,
+                    AppColors.backgroundDark.withOpacity(0.9),
                     Colors.transparent,
                     Colors.black.withOpacity(0.4),
                   ],
+                  stops: const [0.0, 0.15, 0.5, 1.0],
                 ),
               ),
             ),
@@ -156,6 +158,28 @@ class HeroSection extends StatelessWidget {
             ),
           ),
           
+          // Texture Mask (Dedicated Overlay)
+          Positioned(
+            bottom: -2,
+            left: 0,
+            right: 0,
+            height: 80,
+            child: Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.bottomCenter,
+                  end: Alignment.topCenter,
+                  colors: [
+                    AppColors.backgroundDark,
+                    AppColors.backgroundDark,
+                    Colors.transparent,
+                  ],
+                  stops: [0.0, 0.4, 1.0],
+                ),
+              ),
+            ),
+          ),
+
           // Scroll Indicator
           Positioned(
             bottom: 40,

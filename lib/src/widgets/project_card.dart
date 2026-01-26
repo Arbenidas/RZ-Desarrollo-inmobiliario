@@ -78,10 +78,10 @@ class _ProjectCardState extends State<ProjectCard> {
               Expanded(
                 flex: 3, 
                 child: Padding(
-                  padding: const EdgeInsets.all(32),
+                  padding: const EdgeInsets.all(24),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         widget.location.toUpperCase(),
@@ -98,12 +98,12 @@ class _ProjectCardState extends State<ProjectCard> {
                       Flexible(
                          child: Text(
                           widget.description,
-                          style: AppTextStyles.bodyLarge.copyWith(fontSize: 16),
-                          maxLines: 4,
+                          style: AppTextStyles.bodyLarge.copyWith(fontSize: 14),
+                          maxLines: 6,
                           overflow: TextOverflow.ellipsis,
                         ),
                       ),
-                      const Spacer(),
+
                       
                       // Button Visual
                       Row(

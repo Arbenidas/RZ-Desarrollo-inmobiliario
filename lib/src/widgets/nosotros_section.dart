@@ -7,20 +7,23 @@ class NosotrosSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 120),
-      child: Center(
-         child: Container(
-            constraints: const BoxConstraints(maxWidth: 1200),
-            child: LayoutBuilder(
-              builder: (context, constraints) {
-                 final isDesktop = constraints.maxWidth > 900;
-                 return isDesktop ? _buildDesktop(context) : _buildMobile(context);
-              },
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isDesktop = constraints.maxWidth > 900;
+        final horizontalPadding = isDesktop ? 40.0 : 20.0;
+        final verticalPadding = isDesktop ? 120.0 : 60.0;
+        
+        return Container(
+          color: Colors.black,
+          padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
+          child: Center(
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 1200),
+              child: isDesktop ? _buildDesktop(context) : _buildMobile(context),
             ),
-         ),
-      ),
+          ),
+        );
+      },
     );
   }
 
@@ -126,61 +129,69 @@ class NosotrosSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text('SOBRE NOSOTROS', style: AppTextStyles.overline),
-        const SizedBox(height: 24),
+        const SizedBox(height: 16),
         Text(
           'Construyendo el futuro con bases sólidas.',
-          style: AppTextStyles.h2.copyWith(color: Colors.white),
+          style: AppTextStyles.h2.copyWith(color: Colors.white, fontSize: 28),
+        ),
+        const SizedBox(height: 24),
+        Container(
+          height: 220,
+          width: double.infinity,
+          decoration: BoxDecoration(
+            image: const DecorationImage(
+              image: NetworkImage('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'),
+              fit: BoxFit.cover,
+            ),
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+        const SizedBox(height: 24),
+        Text(
+          'En RZ Desarrollos Inmobiliarios, no solo construimos edificios, creamos hogares y comunidades. Nuestra pasión es transformar espacios en oportunidades de vida y negocio, priorizando siempre la calidad, la innovación y la sostenibilidad.',
+          style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[400], height: 1.7, fontSize: 14),
+          textAlign: TextAlign.center,
         ),
         const SizedBox(height: 32),
-        Container(
-            height: 300,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              image: const DecorationImage(
-                image: NetworkImage('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'),
-                fit: BoxFit.cover,
-              ),
-              borderRadius: BorderRadius.circular(2),
-            ),
-         ),
-         const SizedBox(height: 40),
-         Text(
-            'En RZ Desarrollos Inmobiliarios, no solo construimos edificios, creamos hogares y comunidades. Nuestra pasión es transformar espacios en oportunidades de vida y negocio, priorizando siempre la calidad, la innovación y la sostenibilidad.',
-            style: AppTextStyles.bodyLarge.copyWith(color: Colors.grey[400], height: 1.8),
-          ),
-          const SizedBox(height: 48),
-           OutlinedButton(
+        SizedBox(
+          width: double.infinity,
+          child: OutlinedButton(
             onPressed: () {},
             style: OutlinedButton.styleFrom(
               side: const BorderSide(color: Colors.white30),
               foregroundColor: Colors.white,
-              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
-                textStyle: AppTextStyles.button,
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+              textStyle: AppTextStyles.button.copyWith(fontSize: 12),
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
             ),
             child: const Text('MÁS SOBRE NOSOTROS'),
           ),
-        const SizedBox(height: 80),
+        ),
+        const SizedBox(height: 48),
         _buildValuesSection(isDesktop: false),
       ],
     );
   }
 
   Widget _buildValuesSection({required bool isDesktop}) {
+    final isMobile = !isDesktop;
     final cards = [
       _ValueCard(
         icon: Icons.rocket_launch_outlined,
         title: 'Misión',
         description: 'Brindar soluciones inmobiliarias integrales y de alta calidad, desarrollando proyectos innovadores y sostenibles que satisfagan las necesidades de nuestros clientes. Nos comprometemos a la excelencia, la transparencia y el cumplimiento, contribuyendo al desarrollo urbano y al bienestar de la comunidad.',
+        isMobile: isMobile,
       ),
       _ValueCard(
         icon: Icons.visibility_outlined,
         title: 'Visión',
         description: 'Ser la empresa líder en desarrollos inmobiliarios, reconocida por nuestra innovación, calidad y compromiso con el crecimiento sostenible de las ciudades, creando espacios que mejoren la vida de las personas y generen valor a nuestros clientes e inversionistas.',
+        isMobile: isMobile,
       ),
       _ValueCard(
         icon: Icons.diamond_outlined,
         title: 'Valores',
+        isMobile: isMobile,
         children: const [
           _BulletPoint(text: 'Compromiso con el cliente: Priorizar las necesidades y expectativas de los clientes, ofreciendo un servicio personalizado y de calidad.'),
           SizedBox(height: 8),
@@ -206,9 +217,9 @@ class NosotrosSection extends StatelessWidget {
       return Column(
         children: [
           cards[0],
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           cards[1],
-          const SizedBox(height: 24),
+          const SizedBox(height: 16),
           cards[2],
         ],
       );
@@ -221,18 +232,24 @@ class _ValueCard extends StatelessWidget {
   final String title;
   final String? description;
   final List<Widget>? children;
+  final bool isMobile;
 
   const _ValueCard({
     required this.icon,
     required this.title,
     this.description,
     this.children,
+    this.isMobile = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    final padding = isMobile ? 20.0 : 32.0;
+    final iconSize = isMobile ? 36.0 : 48.0;
+    final titleFontSize = isMobile ? 20.0 : 24.0;
+    
     return Container(
-      padding: const EdgeInsets.all(32),
+      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         color: const Color(0xFF111111),
         border: Border.all(color: Colors.white10),
@@ -240,21 +257,22 @@ class _ValueCard extends StatelessWidget {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, size: 48, color: AppColors.primary),
-          const SizedBox(height: 24),
+          Icon(icon, size: iconSize, color: AppColors.primary),
+          SizedBox(height: isMobile ? 16.0 : 24.0),
           Text(
             title,
-            style: AppTextStyles.h3.copyWith(color: Colors.white, fontSize: 24),
-            textAlign: TextAlign.center,
+            style: AppTextStyles.h3.copyWith(color: Colors.white, fontSize: titleFontSize),
+            textAlign: TextAlign.left,
           ),
-          const SizedBox(height: 16),
+          SizedBox(height: isMobile ? 12.0 : 16.0),
           Container(
             height: 2,
             width: 40,
             color: AppColors.primary,
           ),
-          const SizedBox(height: 24),
+          SizedBox(height: isMobile ? 16.0 : 24.0),
           if (description != null)
             Text(
               description!,
@@ -263,7 +281,7 @@ class _ValueCard extends StatelessWidget {
                 height: 1.6,
                 fontSize: 14,
               ),
-              textAlign: TextAlign.justify,
+              textAlign: TextAlign.left,
             ),
           if (children != null)
             Column(
@@ -299,6 +317,7 @@ class _BulletPoint extends StatelessWidget {
               height: 1.6,
               fontSize: 14,
             ),
+            textAlign: TextAlign.start,
           ),
         ),
       ],

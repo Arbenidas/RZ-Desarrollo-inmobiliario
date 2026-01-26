@@ -36,17 +36,6 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: AppColors.backgroundDark,
       body: Stack(
         children: [
-           // Watermark Background
-           Positioned.fill(
-            child: Opacity(
-              opacity: 0.05,
-              child: Image.network(
-                'https://lh3.googleusercontent.com/aida-public/AB6AXuBMLDwUHNcBbEef3o-S2EMuTDOyqZgR6cVcmRlsjaCHSSuQousRieEeyccge82ARK8FjGZIHIdoOnNCTap1bG6UAVneaNovlqOOps0QOWa2R-R0UXDkplUE6ENXwUBGpiK_eUlCAENmWwMT5JDofr4URwmt2wfOpM6bCFK_dvGDjh-YTzboSSe9cRHeODTK4y3FRtAW1fRKuWz8uBua07i_5RcebDSs13rMQIgYrDzexxn4eKm-pKncQ2Dx5ZTTVwe3qFxzbxmB7h6j',
-                repeat: ImageRepeat.repeat,
-              ),
-            ),
-          ),
-          
           SingleChildScrollView(
             child: Column(
               children: [
