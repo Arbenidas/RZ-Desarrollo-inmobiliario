@@ -123,11 +123,11 @@ class Footer extends StatelessWidget {
       children: [
         Text('OFICINAS', style: AppTextStyles.overline.copyWith(color: AppColors.primary)),
         const SizedBox(height: 24),
-        _ContactItem(icon: Icons.location_on, text: 'Torre Futura, Nivel 12\nColonia Escalón, San Salvador'),
+        _ContactItem(icon: Icons.location_on, text: 'Calle Los Eucaliptos 622, San Salvador'),
         const SizedBox(height: 16),
-        _ContactItem(icon: Icons.email, text: 'info@rzdesarrollos.com'),
+        _ContactItem(icon: Icons.email, text: 'Info@rzdesarollosinmobiliarios.com'),
         const SizedBox(height: 16),
-        _ContactItem(icon: Icons.phone, text: '+503 2245 7850'),
+        _ContactItem(icon: Icons.phone, text: '+503 6694 5383'),
       ],
     );
   }
