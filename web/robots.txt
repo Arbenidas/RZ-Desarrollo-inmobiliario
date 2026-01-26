@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rz-desarrollo-inmobiliario.netlify.app/sitemap.xml
